@@ -31,7 +31,7 @@ app.get('/', (req, res, next) => {
 });
 
 app.get('/login', (req, res, next) => {
-    
+
     res.render('login')
 })
 
@@ -62,6 +62,16 @@ app.get('/welcome', (req, res ,next) => {
     })
 })
 
+//a ':' in a url means its a wild card (will match anything in that route)
+app.get('/story/:storyId', (req, res, next) => {
+    // the req.params object always exists 
+    // it will have a property for each wildcard in the route
+    res.send(`<h1> Story ${req.params.storyId} </h1>`)
+})
+
+app.get('/statement', (req, res ,next) => {
+    res.download(path.join(__dirname, 'userStatements/statement.png'))
+})
 app.get('/logout', (req, res, next) => {
     //res.clearCookie takes in 1 arg: a cookie to clear (by name)
     res.clearCookie('username');
