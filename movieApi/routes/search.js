@@ -21,7 +21,7 @@ router.get('/movie', (req, res, next) => {
     const searchTerm = req.query.query;
     const results = movies.filter((movie) => {
         let found = false;
-        found = movie.overview.includes(searchTerms);
+        found = movie.overview.includes(searchTerm);
         return found
     })
 })
